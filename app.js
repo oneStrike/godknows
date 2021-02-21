@@ -47,7 +47,6 @@ db(() => {
   //路由
   app.use(router)
 
-
   //404
   app.use(function (req, res, next) {
     if (req.url === '/favicon.ico') return;
