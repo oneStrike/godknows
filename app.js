@@ -3,17 +3,21 @@ const path = require('path')
 const fs = require('fs')
 const bodyParser = require('body-parser')
 const FileStreamRotator = require("file-stream-rotator");
+const logger = require('morgan')
 
 const sassMiddleware = require('node-sass-middleware')
 
 const db = require(path.join(__dirname, '/db/index'))
 const router = require(path.join(__dirname, '/routes/index'))
-const logger = require('morgan')
+
+const files = require(path.join(__dirname, '/utils/files'))
 
 db(() => {
   //数据库连接成功
   const app = express()
-
+  files(path.join(__dirname)).then(val=>{
+    console.log(val);
+  })
   //设置模板引擎
   app.set('views', path.join(__dirname, '/views'))
   app.set('engine', 'ejs')

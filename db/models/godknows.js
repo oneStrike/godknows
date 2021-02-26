@@ -38,7 +38,8 @@ const godknowsSchema = new mongoose.Schema({
       type: Number,
       index: true,
     }
-  }]
+  }],
+  tags: Array,
 })
 
 const godknows = mongoose.model('godknows', godknowsSchema)
